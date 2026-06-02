@@ -1,7 +1,6 @@
 import pandas as pd
 import os
 
-# Get project root
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 fund_path = os.path.join(BASE_DIR, "data", "raw", "01_fund_master.csv")
