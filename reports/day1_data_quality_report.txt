@@ -1,0 +1,48 @@
+DAY 1 DATA QUALITY REPORT
+
+Date: 02 June 2026
+
+1. Loaded all 10 datasets successfully.
+
+2. Verified dataset structure and schema.
+
+3. Checked row counts and column counts for all datasets.
+
+4. Validated data types across all files.
+
+5. Verified all AMFI scheme codes from fund_master against nav_history.
+
+    Result:
+    - Missing Codes: None
+    - Validation Count: 0
+
+6. Confirmed successful ingestion of:
+
+   * Fund Master
+   * NAV History
+   * AUM by Fund House
+   * Monthly SIP Inflows
+   * Category Inflows
+   * Industry Folio Count
+   * Scheme Performance
+   * Investor Transactions
+   * Portfolio Holdings
+   * Benchmark Indices
+
+7. Successfully fetched and stored live NAV data using MFAPI.
+
+8. Dataset relationships identified using AMFI codes as primary keys.
+
+9. No critical data loading issues observed.
+
+10. Data is ready for cleaning, transformation, and exploratory analysis.
+
+Status: PASS
+
+Conclusion:
+All mutual fund schemes in the master dataset have corresponding NAV records in the historical NAV dataset.
+
+Prepared By:
+Suram Akhil
+
+Project: Capstone Project I - Mutual Fund Analytics .

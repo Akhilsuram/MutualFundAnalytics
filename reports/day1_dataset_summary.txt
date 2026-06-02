@@ -1,0 +1,131 @@
+DAY 1 DATASET SUMMARY :
+
+01_fund_master
+
+Rows: 40
+Columns: 15
+
+Observations:
+
+* Contains mutual fund scheme metadata.
+* Includes AMFI codes and fund house information.
+* Contains category, benchmark, expense ratio, and risk details.
+* Useful as the master reference table for all schemes.
+
+02_nav_history :
+
+Rows: 46000
+Columns: 3
+
+Observations:
+
+* Contains daily NAV values.
+* Largest dataset among the source files.
+* Useful for return calculations and trend analysis.
+* Can be linked to schemes using AMFI code.
+
+03_aum_by_fund_house :
+
+Rows: 90
+Columns: 5
+
+Observations:
+
+* Contains Assets Under Management (AUM) data.
+* Includes fund house-wise statistics.
+* Useful for market share and growth analysis.
+* Contains number of schemes managed by each AMC.
+
+04_monthly_sip_inflows :
+
+Rows: 48
+Columns: 6
+
+Observations:
+
+* Contains monthly SIP inflow data.
+* Includes SIP AUM and active SIP accounts.
+* Useful for investor participation analysis.
+* Can be used to study SIP growth trends.
+
+05_category_inflows :
+
+Rows: 144
+Columns: 3
+
+Observations:
+
+* Contains category-wise net inflows.
+* Covers equity fund categories.
+* Useful for identifying investor preferences.
+* Can be used for category trend analysis.
+
+06_industry_folio_count :
+
+Rows: 21
+Columns: 6
+
+Observations:
+
+* Contains industry folio statistics.
+* Includes equity, debt, hybrid and other folios.
+* Useful for analyzing industry growth.
+* Represents investor account trends over time.
+
+07_scheme_performance :
+
+Rows: 40
+Columns: 19
+
+Observations:
+
+* Contains fund performance metrics.
+* Includes returns, alpha, beta, Sharpe ratio and drawdown.
+* Useful for performance comparison across schemes.
+* Contains risk-adjusted return indicators.
+
+08_investor_transactions :
+
+Rows: 32778
+Columns: 13
+
+Observations:
+
+* Contains investor transaction records.
+* Includes purchase and redemption information.
+* Provides demographic attributes such as age group, gender and income.
+* Useful for investor behavior analysis.
+
+09_portfolio_holdings :
+
+Rows: 322
+Columns: 8
+
+Observations:
+
+* Contains stock holdings of mutual fund schemes.
+* Includes sector allocation and portfolio weights.
+* Useful for portfolio composition analysis.
+* Can be used to identify top holdings and diversification.
+
+10_benchmark_indices :
+
+Rows: 8050
+Columns: 3
+
+Observations:
+
+* Contains benchmark index closing values.
+* Includes historical market index data.
+* Useful for benchmarking scheme performance.
+* Can be used for market trend analysis.
+
+
+Overall Observations:
+
+* Total datasets analyzed: 10
+* Largest dataset: 02_nav_history (46,000 rows)
+* Second largest dataset: 08_investor_transactions (32,778 rows)
+* Data covers schemes, NAV history, AUM, SIP inflows, folios, investor transactions, portfolio holdings and benchmark indices.
+* Datasets can be linked primarily using AMFI codes.
+* Suitable for mutual fund analytics, investor behavior analysis, performance benchmarking and dashboard creation.
