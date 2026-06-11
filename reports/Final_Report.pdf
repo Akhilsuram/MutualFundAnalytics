@@ -1,0 +1,304 @@
+Mutual Fund Analytics Capstone Project
+
+Executive Summary
+
+The Mutual Fund Analytics Capstone Project was developed to perform end-to-end analysis of the Indian mutual fund industry using historical fund data, investor transaction data, portfolio holdings, and benchmark indices. The project focused on building a complete analytics pipeline including data ingestion, cleaning, database design, exploratory data analysis, performance analytics, risk analytics, and interactive dashboard development.
+The solution was implemented using Python, Pandas, NumPy, SQLAlchemy, SQLite, Plotly, Seaborn, Matplotlib, Jupyter Notebook, and Power BI. A total of 40 mutual fund schemes were analyzed across multiple dimensions including NAV performance, risk-adjusted returns, investor behavior, portfolio concentration, and SIP trends.
+The final output includes automated ETL pipelines, analytical notebooks, risk metric reports, an interactive Power BI dashboard, and actionable investment insights. The project demonstrates practical applications of data engineering, financial analytics, business intelligence, and data visualization.
+
+
+# 1. Project Objectives :
+
+The primary objectives of this project were:
+* Build a structured ETL pipeline for mutual fund datasets.
+* Clean and validate historical mutual fund data.
+* Design and implement a relational analytics database.
+* Perform exploratory data analysis on industry and fund-level data.
+* Calculate fund performance and risk metrics.
+* Analyze investor behavior and SIP trends.
+* Build an interactive business intelligence dashboard.
+* Generate investment insights and fund recommendations.
+
+# 2. Data Sources :
+
+The project utilized multiple datasets covering mutual fund performance, investor transactions, portfolio holdings, and market benchmarks.
+
+-> Datasets Used:
+1. Fund Master
+2. NAV History
+3. AUM by Fund House
+4. Monthly SIP Inflows
+5. Category Inflows
+6. Industry Folio Count
+7. Scheme Performance
+8. Investor Transactions
+9. Portfolio Holdings
+10. Benchmark Indices
+
+->External API:
+
+The project also integrated live NAV data using:
+
+https://api.mfapi.in
+
+This API was used to fetch current NAV values for selected mutual fund schemes.
+
+# 3. ETL Design and Data Engineering :
+
+A complete ETL (Extract, Transform, Load) workflow was developed.
+
+-> Extraction :
+Data was extracted from CSV datasets and MFAPI live endpoints.
+
+## Transformation :
+The following transformations were performed:
+* Date parsing and standardization
+* Duplicate removal
+* Missing value handling
+* Transaction type normalization
+* Data type validation
+* Expense ratio validation
+* NAV validation
+* AMFI code validation
+
+-> Loading :
+Cleaned datasets were loaded into a SQLite analytics database using SQLAlchemy.
+
+-> Database Tables:
+* dim_fund
+* fact_nav
+* fact_transactions
+* fact_performance
+* fact_aum
+
+The database was designed to support efficient analytical queries and dashboard reporting.
+
+# 4. Exploratory Data Analysis (EDA) :
+
+Exploratory analysis was performed to understand trends in fund performance, investor behavior, and industry growth.
+
+## NAV Trend Analysis :
+Daily NAV data from 2022–2025 was analyzed across all schemes.
+
+-> Key Observations:
+* Most equity-oriented schemes exhibited consistent long-term growth.
+* Temporary corrections were visible during periods of market volatility.
+* Large-cap funds showed relatively stable growth trajectories.
+
+reports/nav_trend.png
+
+
+## AUM Growth Analysis :
+Assets Under Management (AUM) were analyzed across fund houses.
+
+### Key Observations
+
+* SBI Mutual Fund maintained the highest AUM.
+* Large AMCs dominated industry assets.
+* AUM growth remained positive across the study period.
+
+reports/aum_growth.png
+
+## SIP Inflow Analysis :
+Monthly SIP inflows were analyzed.
+
+### Key Observations :
+* SIP participation increased steadily.
+* Monthly inflows reached record highs in later periods.
+* SIP growth reflected rising retail investor participation.
+dashboard/SIP_Market_Trends.png
+
+## Investor Demographics :
+Investor distribution was analyzed using:
+
+* Age Groups
+* Gender
+* Geographic Location
+* City Tier
+
+### Key Observations :
+* Working-age investors contributed the largest transaction volumes.
+* Metro and Tier-1 cities represented the majority of investments.
+* SIP participation was strong among younger investors.
+
+## Correlation Analysis :
+Fund return correlations were evaluated.
+
+### Key Observations :
+* Large-cap funds exhibited strong positive correlations.
+* Diversified categories showed lower correlation levels.
+* Correlation analysis highlighted diversification opportunities.
+reports/correlation_matrix.png
+
+# 5. Fund Performance Analytics :
+Advanced performance metrics were calculated for all schemes.
+
+## CAGR Analysis
+Compound Annual Growth Rate (CAGR) was computed using historical NAV values.
+
+### Formula
+CAGR = (Ending NAV / Beginning NAV)^(1/n) - 1
+
+### Findings :
+* Several schemes achieved double-digit CAGR.
+* Long-term performance varied significantly across categories.
+
+## Sharpe Ratio :
+Risk-adjusted performance was measured using Sharpe Ratio.
+
+### Formula :
+Sharpe Ratio = (Rp − Rf) / σ × √252
+
+where:
+* Rp = portfolio return
+* Rf = risk-free rate (6.5%)
+* σ = standard deviation
+
+### Findings :
+* Top-performing funds achieved Sharpe Ratios above 1.
+* Higher Sharpe Ratios indicated superior risk-adjusted returns.
+
+## Sortino Ratio :
+Downside risk-adjusted performance was evaluated.
+
+### Findings :
+* Sortino Ratios exceeded Sharpe Ratios for most funds.
+* Negative return volatility was effectively captured.
+
+## Alpha and Beta :
+Regression analysis against NIFTY 100 benchmark was performed.
+
+### Findings :
+* Alpha measured benchmark outperformance.
+* Beta measured market sensitivity.
+* Several funds generated positive alpha.
+
+## Maximum Drawdown :
+Maximum drawdown was used to measure downside risk.
+
+### Findings :
+* Drawdowns varied significantly across funds.
+* Aggressive funds generally experienced larger drawdowns.
+dashboard/Fund_Performance.png
+
+# 6. Advanced Analytics and Risk Metrics :
+
+## Historical VaR and CVaR
+Value at Risk (95%) and Conditional VaR were computed.
+
+### Findings
+* VaR quantified expected worst-case daily losses.
+* CVaR captured tail-risk scenarios.
+
+data/processed/var_cvar_report.csv
+
+## Rolling Sharpe Ratio
+90-day rolling Sharpe Ratios were calculated.
+
+### Findings :
+* Risk-adjusted performance fluctuated over time.
+* Some funds demonstrated more consistent performance than others.
+reports/Sharp_Ratio.png
+
+## Investor Cohort Analysis
+Investors were grouped based on first transaction year.
+
+### Findings
+* Earlier cohorts contributed higher total investment amounts.
+* Cohort behavior differed significantly across periods.
+
+## SIP Continuity Analysis
+Investors with recurring SIPs were evaluated.
+
+### Findings
+* Most investors showed irregular contribution patterns.
+* At-risk investors were identified using contribution gaps.
+
+## Sector Concentration Analysis
+Portfolio concentration was measured using the Herfindahl-Hirschman Index (HHI).
+
+### Findings
+* Some funds maintained diversified sector exposure.
+* Others displayed concentrated sector allocations.
+
+## Fund Recommendation Engine
+A simple recommendation system was developed.
+
+### Inputs
+* Low Risk
+* Moderate Risk
+* High Risk
+
+### Output
+
+Top-performing funds based on Sharpe Ratio and risk category.
+
+# 7. Dashboard Development :
+
+An interactive Power BI dashboard was developed consisting of four pages.
+
+## Page 1 – Industry Overview
+
+Features:
+* KPI Cards
+* Industry AUM Trends
+* AMC-wise AUM Distribution
+dashboard/Industry_Overview.png
+
+## Page 2 – Fund Performance
+
+Features:
+* Risk vs Return Analysis
+* Fund Scorecard
+* NAV Performance Tracking
+dashboard/Fund_Performance.png
+
+## Page 3 – Investor Analytics
+
+Features:
+* Geographic Analysis
+* Transaction Trends
+* Demographic Analysis
+dashboard/Investor_Analytics.png
+
+## Page 4 – SIP and Market Trends
+
+Features:
+* SIP vs NIFTY Analysis
+* Category Inflow Heatmap
+* Market Trend Monitoring
+dashboard/SIP_Market_Trends.png
+
+# 8. Key Findings :
+
+1. Strong long-term growth was observed across multiple mutual fund categories.
+2. Higher Sharpe Ratio funds consistently outperformed peers on a risk-adjusted basis.
+3. SIP participation increased significantly during the analysis period.
+4. Investor behavior varied across cohorts and geographic regions.
+5. Several funds demonstrated positive alpha against market benchmarks.
+6. Concentrated portfolios exhibited higher concentration risk.
+7. Rolling Sharpe analysis revealed changing performance cycles over time.
+8. Most SIP investors were identified as continuity-risk candidates.
+9. Diversification opportunities were evident through correlation analysis.
+10. Dashboard insights support data-driven investment decisions.
+
+# 9. Limitations :
+
+* Analysis was limited to available historical data.
+* Benchmark comparisons relied on selected indices.
+* Market conditions may change future performance outcomes.
+* Synthetic or sample datasets may differ from live market behavior.
+* Recommendation engine uses simplified scoring methodology.
+
+# 10. Recommendations :
+
+* Expand analytics using additional market benchmarks.
+* Integrate real-time NAV updates.
+* Enhance recommendation models using machine learning.
+* Develop automated reporting workflows.
+* Incorporate predictive forecasting techniques.
+
+# 11. Conclusion :
+
+This project successfully demonstrated a complete mutual fund analytics workflow from raw data ingestion to executive-level dashboard reporting. The solution combined data engineering, financial analytics, risk management, and business intelligence techniques to generate meaningful insights for investors and stakeholders.
+The project achieved all planned objectives and delivered a scalable framework for mutual fund performance analysis, investor behavior monitoring, and risk assessment.
